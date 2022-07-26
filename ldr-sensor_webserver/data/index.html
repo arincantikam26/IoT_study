@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+        min-width: 310px;
+            max-width: 800px;
+            height: 400px;
+        margin: 0 auto;
+        }
+        h2 {
+        font-family: Arial;
+        font-size: 2.5rem;
+        text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>ESP8266 Distance Plot</h2>
+    <h3>
+        <div id = "ldr">Nilai Sensor : %LDR%</div> <!-- menampilkan nilai ldr dari script -->
+    </h3>
+</body>
+<script>
+//memanggil suatu fungsi secara berulang setiap beberpa milidetik. 
+//JAVASCRIPT AJAX
+//fungsi Ldr
+    setInterval(function() {
+        var xhttp = new XMLHttpRequest(); //obejct baru
+        xhttp.onreadystatechange = function() { //cek kondisi
+            if (this.readyState == 4 && this.status == 200) { //jika sudah oke
+            document.getElementById("ldr").innerHTML = this.responseText; //mendaptakan nilai si status
+        }
+        };
+        xhttp.open("GET", "/ldrValue", true) //method http dan url
+        xhttp.send(); // mengirim request dengan menggunakan send
+    }, 3000);s
+
+</script>
+</html>
